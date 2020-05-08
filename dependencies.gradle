@@ -1,0 +1,20 @@
+ext{
+    appComponentVersion = "1.1.0"
+    androidXCoreVersion = "1.2.0"
+    constraintLayoutVersion = "1.1.3"
+    koinVersion = "2.1.5"
+    retrofitVersion = "2.8.1"
+
+    androidDependencies = [
+            appComponent:"androidx.appcompat:appcompat:$appComponentVersion",
+            androidXCore:"androidx.core:core-ktx:$androidXCoreVersion",
+            constraintLayout:"androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    ]
+    thirdPartyDependencies = [
+            koin                :"org.koin:koin-android:$koinVersion",
+            koinScope           :"org.koin:koin-androidx-scope:$koinVersion",
+            koinViewModel       :"org.koin:koin-androidx-viewmodel:$koinVersion",
+            "retrofit"          :"com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "retrofitConverter" :"com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    ]
+}
