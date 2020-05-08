@@ -6,5 +6,7 @@ MVVM Architecture
 
 ## Third Party Libraries
 
-Koin = 2.1.5
-Retrofit = 2.8.1
+| Library Name        | Version       |
+| ------------------- |:-------------:|
+| Retrofit            | 2.8.1         |
+| Koin                | 2.1.5         |
