@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <View
+            android:id="@+id/homeTempView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/home_screen_temp_view_size"
+            android:background="@drawable/bg_gradient_colorprimarydark_to_colorprimary"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appIcon"
+            android:layout_width="@dimen/home_screen_icon_size"
+            android:layout_height="@dimen/home_screen_icon_size"
+            android:layout_margin="@dimen/base_margin_XXL"
+            android:transitionName="@string/image_transition"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_launcher"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/homeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/base_margin_XXL"
+            android:text="@string/home_screen_title"
+            android:textColor="@android:color/white"
+            android:textAppearance="@style/BigTextAppearance.Bold"
+            app:layout_constraintTop_toTopOf="@id/appIcon"
+            app:layout_constraintBottom_toBottomOf="@id/appIcon"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/homeCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin_XXL"
+            app:cardCornerRadius="@dimen/base_radius_medium_curved"
+            app:layout_constraintTop_toBottomOf="@id/appIcon">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/homeCardViewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/base_margin_XL"
+                android:paddingBottom="@dimen/base_margin_XL"
+                android:animateLayoutChanges="true">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/homeCardViewTotalCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/BigTextAppearance.Bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/homeCardViewText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/homeCardViewText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_screen_card_view_text"
+                    android:textColor="@color/grey500"
+                    android:textAppearance="@style/MediumTextAppearance"
+                    app:layout_constraintTop_toBottomOf="@id/homeCardViewTotalCount"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/base_margin_L"
+            app:layout_constraintTop_toBottomOf="@id/homeCardView"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

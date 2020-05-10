@@ -8,4 +8,70 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Splash Theme -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:background">@drawable/bg_gradient_colorprimarydark_to_colorprimary</item>
+    </style>
+
+    <!-- Text Appearance -->
+    <style name="SmallTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_XS</item>
+    </style>
+
+    <style name="SmallTextAppearance.Bold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo_bold</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_XS</item>
+    </style>
+
+    <style name="MediumTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_M</item>
+    </style>
+
+    <style name="MediumTextAppearance.Bold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo_bold</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_M</item>
+    </style>
+
+    <style name="BigTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_XL</item>
+    </style>
+
+    <style name="BigTextAppearance.Bold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/arvo_bold</item>
+        <item name="android:textColor">@color/base_text_color</item>
+        <item name="android:textSize">@dimen/base_text_XL</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="CurvedButtonStyle">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAppearance">@style/MediumTextAppearance.Bold</item>
+        <item name="android:height">@dimen/button_height</item>
+        <item name="android:background">@drawable/bg_button_curved_colorprimarydark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TransparentButtonStyle">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAppearance">@style/MediumTextAppearance.Bold</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Edittext Style -->
+    <style name="EdittextStyle">
+        <item name="android:height">@dimen/edittext_height</item>
+        <item name="android:paddingStart">@dimen/base_margin_S</item>
+        <item name="android:paddingEnd">@dimen/base_margin_S</item>
+        <item name="android:textAppearance">@style/MediumTextAppearance</item>
+    </style>
+
 </resources>

@@ -1,6 +1,10 @@
 package com.mkpatir.itmswikiapp.internal.di
 
 import com.mkpatir.itmswikiapp.data.remote.AppServiceFactory
+import com.mkpatir.itmswikiapp.presentation.ui.detail.DetailViewModel
+import com.mkpatir.itmswikiapp.presentation.ui.home.HomeViewModel
+import com.mkpatir.itmswikiapp.presentation.ui.login.LoginViewModel
+import com.mkpatir.itmswikiapp.presentation.ui.register.RegisterViewModel
 import com.mkpatir.itmswikiapp.presentation.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -13,6 +17,10 @@ val appModule = module(true) {
 
 val viewModelModule = module(true){
     viewModel { SplashViewModel() }
+    viewModel { LoginViewModel() }
+    viewModel { RegisterViewModel() }
+    viewModel { HomeViewModel() }
+    viewModel { DetailViewModel() }
 }
 
 val appKoinModules = listOf(appModule, viewModelModule)

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base -->
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="edittext_height">44dp</dimen>
+
+    <!-- Base Margins -->
+    <dimen name="base_margin_XXS">4dp</dimen>
+    <dimen name="base_margin_XS">6dp</dimen>
+    <dimen name="base_margin_S">8dp</dimen>
+    <dimen name="base_margin_M">10dp</dimen>
+    <dimen name="base_margin_L">12dp</dimen>
+    <dimen name="base_margin_XL">14dp</dimen>
+    <dimen name="base_margin_XXL">16dp</dimen>
+
+    <!-- Base Text Sizes -->
+    <dimen name="base_text_XXS">8sp</dimen>
+    <dimen name="base_text_XS">10sp</dimen>
+    <dimen name="base_text_S">12sp</dimen>
+    <dimen name="base_text_M">14sp</dimen>
+    <dimen name="base_text_L">16sp</dimen>
+    <dimen name="base_text_XL">16sp</dimen>
+    <dimen name="base_text_XXL">18sp</dimen>
+    <dimen name="base_text_very_large">24sp</dimen>
+
+    <!-- Base Radius -->
+    <dimen name="base_radius_small_curved">4dp</dimen>
+    <dimen name="base_radius_medium_curved">8dp</dimen>
+    <dimen name="base_radius_circle">45dp</dimen>
+
+    <!-- Splash Screen -->
+    <dimen name="splash_screen_icon_size">165dp</dimen>
+
+    <!-- Login Screen -->
+    <dimen name="login_screen_icon_size">100dp</dimen>
+    <dimen name="login_screen_icon_margin_top">60dp</dimen>
+
+    <!-- Home Screen -->
+    <dimen name="home_screen_icon_size">60dp</dimen>
+    <dimen name="home_screen_temp_view_size">130dp</dimen>
+    <dimen name="home_screen_card_view_size">75dp</dimen>
+    <dimen name="home_screen_scroll_expand">50dp</dimen>
+    <dimen name="home_screen_scroll_collapse">150dp</dimen>
+
+</resources>

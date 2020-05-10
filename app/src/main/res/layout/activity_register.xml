@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="registerHandler"
+            type="com.mkpatir.itmswikiapp.presentation.ui.register.RegisterHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/base_margin_XXL">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/toolbar_height"
+            android:layout_height="@dimen/toolbar_height"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:onClick="@{view -> registerHandler.backButtonClick(view)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_back_arrow"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/registerTitle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_height"
+            android:text="@string/register"
+            android:textColor="@color/colorPrimaryDark"
+            android:textAppearance="@style/MediumTextAppearance.Bold"
+            android:gravity="center_vertical|center_horizontal"
+            android:transitionName="@string/login_screen_transition_login_to_register_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appIcon"
+            android:layout_width="@dimen/login_screen_icon_size"
+            android:layout_height="@dimen/login_screen_icon_size"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:transitionName="@string/image_transition"
+            app:layout_constraintTop_toBottomOf="@id/registerTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_launcher"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/registerDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margin_XXL"
+            android:text="@string/register_screen_description"
+            android:textColor="@color/colorPrimaryDark"
+            android:textAppearance="@style/MediumTextAppearance"
+            app:layout_constraintTop_toTopOf="@id/appIcon"
+            app:layout_constraintBottom_toBottomOf="@id/appIcon"
+            app:layout_constraintStart_toEndOf="@id/appIcon"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/registerUsername"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_XXL"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_username"
+            android:inputType="textEmailAddress"
+            android:transitionName="@string/login_screen_transition_login_to_register_email"
+            app:layout_constraintTop_toBottomOf="@id/appIcon"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/registerName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_name"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/registerUsername"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/registerSurname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_surname"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/registerName"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:transitionName="@string/login_screen_transition_login_to_register_password"
+            app:layout_constraintTop_toBottomOf="@id/registerSurname"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:text="@string/register"
+            android:transitionName="@string/login_screen_transition_login_to_register_button"
+            android:onClick="@{registerHandler.registerClick}"
+            app:layout_constraintTop_toBottomOf="@id/registerPassword"
+            style="@style/CurvedButtonStyle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

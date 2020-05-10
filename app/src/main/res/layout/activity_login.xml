@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mkpatir.itmswikiapp.presentation.ui.login.LoginViewModel" />
+
+        <variable
+            name="loginHandler"
+            type="com.mkpatir.itmswikiapp.presentation.ui.login.LoginHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/base_margin_XXL"
+        android:paddingEnd="@dimen/base_margin_XXL">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appIcon"
+            android:layout_width="@dimen/login_screen_icon_size"
+            android:layout_height="@dimen/login_screen_icon_size"
+            android:layout_marginTop="@dimen/login_screen_icon_margin_top"
+            android:transitionName="@string/image_transition"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_launcher"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/loginAppName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_XL"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/BigTextAppearance.Bold"
+            app:layout_constraintTop_toBottomOf="@id/appIcon"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_username"
+            android:inputType="textEmailAddress"
+            android:transitionName="@string/login_screen_transition_login_to_register_email"
+            android:onTextChanged="@{loginHandler.emailTextChange}"
+            app:layout_constraintBottom_toTopOf="@id/loginPassword"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:transitionName="@string/login_screen_transition_login_to_register_password"
+            android:onTextChanged="@{loginHandler.passwordTextChange}"
+            app:layout_constraintTop_toBottomOf="@id/loginEmail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:text="@string/login"
+            android:onClick="@{view -> loginHandler.loginClick(view)}"
+            android:transitionName="@string/login_screen_transition_login_to_register_button"
+            app:layout_constraintTop_toBottomOf="@id/loginPassword"
+            style="@style/CurvedButtonStyle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/loginSignUpTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_screen_sign_up_title"
+            android:textAppearance="@style/MediumTextAppearance"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/registerButton"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/register"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/colorPrimaryDark"
+            android:onClick="@{view -> loginHandler.registerClick(view)}"
+            android:transitionName="@string/login_screen_transition_login_to_register_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/TransparentButtonStyle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

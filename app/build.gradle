@@ -17,9 +17,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs{
+        release {
+            storeFile file("itmswikiapp.jks")
+            storePassword "itmswikiapp"
+            keyAlias "itmswikiapp"
+            keyPassword "itmswikiapp"
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -52,18 +62,21 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def androidDependencies = rootProject.ext.androidDependencies
     def thirdPartyDependencies = rootProject.ext.thirdPartyDependencies
+    def testDependencies = rootProject.ext.testDependencies
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation androidDependencies.appComponent
     implementation androidDependencies.androidXCore
     implementation androidDependencies.constraintLayout
+    implementation androidDependencies.material
     implementation thirdPartyDependencies.koin
     implementation thirdPartyDependencies.koinScope
     implementation thirdPartyDependencies.koinViewModel
     implementation thirdPartyDependencies.retrofit
     implementation thirdPartyDependencies.retrofitConverter
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.androidXjunit
+    androidTestImplementation testDependencies.espresso
 }

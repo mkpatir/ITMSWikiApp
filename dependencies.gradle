@@ -2,13 +2,20 @@ ext{
     appComponentVersion = "1.1.0"
     androidXCoreVersion = "1.2.0"
     constraintLayoutVersion = "1.1.3"
+    materialVersion = "1.1.0"
+
     koinVersion = "2.1.5"
     retrofitVersion = "2.8.1"
 
+    junitVersion = "4.12"
+    androidXjunitVersion = "1.1.1"
+    espressoVersion = "3.2.0"
+
     androidDependencies = [
-            appComponent:"androidx.appcompat:appcompat:$appComponentVersion",
-            androidXCore:"androidx.core:core-ktx:$androidXCoreVersion",
-            constraintLayout:"androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+            appComponent        :"androidx.appcompat:appcompat:$appComponentVersion",
+            androidXCore        :"androidx.core:core-ktx:$androidXCoreVersion",
+            constraintLayout    :"androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            material            :"com.google.android.material:material:$materialVersion"
     ]
     thirdPartyDependencies = [
             koin                :"org.koin:koin-android:$koinVersion",
@@ -16,5 +23,10 @@ ext{
             koinViewModel       :"org.koin:koin-androidx-viewmodel:$koinVersion",
             "retrofit"          :"com.squareup.retrofit2:retrofit:$retrofitVersion",
             "retrofitConverter" :"com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    ]
+    testDependencies = [
+            junit               :"junit:junit:$junitVersion",
+            androidXjunit       :"androidx.test.ext:junit:$androidXjunitVersion",
+            espresso            :"androidx.test.espresso:espresso-core:$espressoVersion"
     ]
 }

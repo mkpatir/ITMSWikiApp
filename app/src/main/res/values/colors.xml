@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base Colors -->
     <color name="colorPrimary">#FFC14F</color>
     <color name="colorPrimaryDark">#F44545</color>
     <color name="colorAccent">#3493F8</color>
+
+    <color name="base_text_color">#212121</color>
+
+    <!-- Color With Name -->
+    <color name="grey200">#EEEEEE</color>
+    <color name="grey300">#E0E0E0</color>
+    <color name="grey400">#BDBDBD</color>
+    <color name="grey500">#9E9E9E</color>
+    <color name="grey900">#212121</color>
 </resources>
