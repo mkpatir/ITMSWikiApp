@@ -12,7 +12,8 @@ import com.mkpatir.itmswikiapp.internal.extention.gone
 import com.mkpatir.itmswikiapp.internal.extention.isVisible
 import com.mkpatir.itmswikiapp.internal.extention.visible
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseActivity
-import com.mkpatir.itmswikiapp.presentation.ui.detail.DetailActivity
+import com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricSheetFragment
+import com.mkpatir.itmswikiapp.presentation.ui.home.detail.DetailSheetFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -55,9 +56,12 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
         homeRecyclerView.adapter = metricsAdapter
         metricsAdapter.assignInitialValues(DummyData.getMetricDummyData())
         metricsAdapter.itemClickListener = {
-            startActivity(DetailActivity.callingIntent(this,it))
+            DetailSheetFragment.showFragment(supportFragmentManager,it)
         }
         homeCardViewTotalCount.text = DummyData.getMetricDummyData().size.toString()
+        fabButton.setOnClickListener {
+            AddMetricSheetFragment.showFragment(supportFragmentManager)
+        }
     }
 
     override fun onBackPressed() {

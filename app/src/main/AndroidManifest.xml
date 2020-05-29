@@ -34,10 +34,6 @@
             android:name=".presentation.ui.home.HomeActivity"
             android:screenOrientation="portrait"/>
 
-        <activity
-            android:name=".presentation.ui.detail.DetailActivity"
-            android:screenOrientation="portrait"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,4 +1,4 @@
-package com.mkpatir.itmswikiapp.presentation.ui.detail
+package com.mkpatir.itmswikiapp.presentation.ui.home.detail
 
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseViewModel
 

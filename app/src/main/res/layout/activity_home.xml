@@ -86,5 +86,17 @@
             app:layout_constraintTop_toBottomOf="@id/homeCardView"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fabButton"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/base_margin_XXL"
+            android:layout_marginEnd="@dimen/base_margin_XXL"
+            android:background="@drawable/bg_circle_white"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_plus"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

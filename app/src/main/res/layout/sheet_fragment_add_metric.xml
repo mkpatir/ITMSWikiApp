@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addMetricHandler"
+            type="com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/base_margin_XXL">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/addMetricTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_XXL"
+            android:text="@string/add_metric_screen_title"
+            android:textAppearance="@style/BigTextAppearance.Bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/metricName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_XXL"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_metric_name"
+            app:layout_constraintTop_toBottomOf="@id/addMetricTitle"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/metricGoal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_metric_goal"
+            app:layout_constraintTop_toBottomOf="@id/metricName"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/metricMeasurementPeriod"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_metric_measurement_period"
+            app:layout_constraintTop_toBottomOf="@id/metricGoal"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/metricMeasurementType"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:background="@drawable/bg_edittext_curved_grey"
+            android:hint="@string/hint_metric_measurement_type"
+            app:layout_constraintTop_toBottomOf="@id/metricMeasurementPeriod"
+            style="@style/EdittextStyle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addMetricButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:text="@string/add"
+            android:onClick="@{addMetricHandler.addMetric}"
+            app:layout_constraintTop_toBottomOf="@id/metricMeasurementType"
+            style="@style/CurvedButtonStyle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
