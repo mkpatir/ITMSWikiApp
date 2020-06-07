@@ -57,10 +57,10 @@ class RegisterActivity: BaseActivity<RegisterViewModel,ActivityRegisterBinding>(
             }
             else{
                 this@RegisterActivity.getViewModel().register(
-                    registerEmail.text.toString(),
+                    registerEmail.text.toString().trim(),
                     registerName.text.toString(),
                     registerSurname.text.toString(),
-                    registerPassword.text.toString()
+                    registerPassword.text.toString().trim()
                 )
             }
         }

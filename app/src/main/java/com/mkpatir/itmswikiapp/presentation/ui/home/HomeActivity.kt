@@ -3,6 +3,7 @@ package com.mkpatir.itmswikiapp.presentation.ui.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mkpatir.itmswikiapp.R
@@ -34,11 +35,15 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getDataBinding().apply {
+            viewModel = this@HomeActivity.getViewModel()
+        }
         initializeComponents()
+        observeLiveData()
+        getViewModel().getAllMetrics()
     }
 
     private fun initializeComponents() {
-        homeRecyclerView.layoutManager = LinearLayoutManager(this)
         homeRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             val collapse = this@HomeActivity.resources.getDimension(R.dimen.home_screen_scroll_collapse)
             val expand = this@HomeActivity.resources.getDimension(R.dimen.home_screen_scroll_expand)
@@ -54,13 +59,19 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
             }
         })
         homeRecyclerView.adapter = metricsAdapter
-        metricsAdapter.assignInitialValues(DummyData.getMetricDummyData())
         metricsAdapter.itemClickListener = {
             DetailSheetFragment.showFragment(supportFragmentManager,it)
         }
-        homeCardViewTotalCount.text = DummyData.getMetricDummyData().size.toString()
         fabButton.setOnClickListener {
             AddMetricSheetFragment.showFragment(supportFragmentManager)
+        }
+    }
+
+    private fun observeLiveData(){
+        getViewModel().apply {
+            allMetricsLiveData.observe(this@HomeActivity, Observer {
+                metricsAdapter.assignInitialValues(it)
+            })
         }
     }
 

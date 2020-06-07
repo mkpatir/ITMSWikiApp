@@ -17,6 +17,7 @@ class LoginViewModel(
     /**
      * UI Properties
      */
+
     var buttonEnabled = ObservableField(false)
 
     var loginButtonVisibility = ObservableField<Boolean>(true)

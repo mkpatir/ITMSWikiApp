@@ -57,8 +57,8 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
             }
             else{
                 this@LoginActivity.getViewModel().login(
-                    loginEmail.text.toString(),
-                    loginPassword.text.toString()
+                    loginEmail.text.toString().trim(),
+                    loginPassword.text.toString().trim()
                 )
             }
         }

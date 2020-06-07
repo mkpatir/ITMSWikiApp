@@ -17,6 +17,7 @@ class RegisterViewModel(
     /**
      * UI Properties
      */
+
     var registerButtonVisibility = ObservableField<Boolean>(true)
     var lottieAnimationVisibility = ObservableField<Boolean>(false)
 
