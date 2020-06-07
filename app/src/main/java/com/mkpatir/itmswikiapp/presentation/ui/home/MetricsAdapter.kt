@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mkpatir.itmswikiapp.R
-import com.mkpatir.itmswikiapp.data.models.MetricResponse
+import com.mkpatir.itmswikiapp.data.models.response.MetricResponse
 import kotlinx.android.synthetic.main.row_metric.view.*
 
 class MetricsAdapter(private var itemList: ArrayList<MetricResponse>): RecyclerView.Adapter<MetricsAdapter.MetricViewHolder>() {
@@ -27,7 +27,7 @@ class MetricsAdapter(private var itemList: ArrayList<MetricResponse>): RecyclerV
 
     inner class MetricViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun bind(metricResponse: MetricResponse,position: Int){
+        fun bind(metricResponse: MetricResponse, position: Int){
             itemView.rowMetricName.text = metricResponse.name
             itemView.rowMetricGoal.text = metricResponse.goal
             when {

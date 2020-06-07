@@ -38,12 +38,14 @@ android {
         development {
             flavorDimensions "Development"
             resValue "string", "app_name", "ITMS Wiki App Development"
-            buildConfigField 'String', 'API_ADRESS', '"http://"'
+            resValue "bool", "clearTextTraffic", "true"
+            buildConfigField 'String', 'API_ADRESS', '"http://165.22.46.177:7000/"'
         }
         production {
             flavorDimensions "Production"
             resValue "string", "app_name", "ITMS Wiki App"
-            buildConfigField 'String', 'API_ADRESS', '"http://"'
+            resValue "bool", "clearTextTraffic", "true"
+            buildConfigField 'String', 'API_ADRESS', '"http://165.22.46.177:7000/"'
         }
     }
 
@@ -74,7 +76,12 @@ dependencies {
     implementation thirdPartyDependencies.koinScope
     implementation thirdPartyDependencies.koinViewModel
     implementation thirdPartyDependencies.retrofit
+    implementation thirdPartyDependencies.retrofitAdapter
     implementation thirdPartyDependencies.retrofitConverter
+    implementation thirdPartyDependencies.loggingInterceptor
+    implementation thirdPartyDependencies.conscrypt
+    implementation thirdPartyDependencies.rxJava
+    implementation thirdPartyDependencies.rxAndroid
 
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.androidXjunit

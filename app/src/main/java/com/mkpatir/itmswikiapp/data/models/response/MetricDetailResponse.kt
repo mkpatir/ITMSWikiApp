@@ -1,4 +1,4 @@
-package com.mkpatir.itmswikiapp.data.models
+package com.mkpatir.itmswikiapp.data.models.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -6,6 +6,10 @@ ext{
 
     koinVersion = "2.1.5"
     retrofitVersion = "2.8.1"
+    retrofitAdapterVersion = "2.9.0"
+    loggingInterceptorVersion = "4.7.2"
+    conscryptVersion = "2.4.0"
+    rxJavaVersion = "3.0.0"
 
     junitVersion = "4.12"
     androidXjunitVersion = "1.1.1"
@@ -21,8 +25,13 @@ ext{
             koin                :"org.koin:koin-android:$koinVersion",
             koinScope           :"org.koin:koin-androidx-scope:$koinVersion",
             koinViewModel       :"org.koin:koin-androidx-viewmodel:$koinVersion",
-            "retrofit"          :"com.squareup.retrofit2:retrofit:$retrofitVersion",
-            "retrofitConverter" :"com.squareup.retrofit2:converter-gson:$retrofitVersion"
+            retrofit            :"com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitAdapter     :"com.squareup.retrofit2:adapter-rxjava3:$retrofitAdapterVersion",
+            retrofitConverter   :"com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            loggingInterceptor  :"com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            conscrypt           :"org.conscrypt:conscrypt-android:$conscryptVersion",
+            rxJava              :"io.reactivex.rxjava3:rxjava:$rxJavaVersion",
+            rxAndroid           :"io.reactivex.rxjava3:rxandroid:$rxJavaVersion"
     ]
     testDependencies = [
             junit               :"junit:junit:$junitVersion",

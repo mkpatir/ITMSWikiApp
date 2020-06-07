@@ -37,10 +37,11 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
     }
 
     override fun loginClick(view: View) {
-        val imageTransition = Pair<View,String>(appIcon,getString(R.string.image_transition))
+        getViewModel().login("Test","Test")
+        /*val imageTransition = Pair<View,String>(appIcon,getString(R.string.image_transition))
         val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,imageTransition)
         startActivity(HomeActivity.callingIntent(this), activityOptions.toBundle())
-        activityFinishAfterTransition()
+        activityFinishAfterTransition()*/
     }
 
     override fun registerClick(view: View) {

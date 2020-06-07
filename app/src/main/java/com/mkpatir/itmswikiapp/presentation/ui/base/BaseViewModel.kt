@@ -1,7 +1,20 @@
 package com.mkpatir.itmswikiapp.presentation.ui.base
 
 import androidx.lifecycle.ViewModel
+import com.mkpatir.itmswikiapp.domain.interactor.base.BaseUseCase
 
-abstract class BaseViewModel: ViewModel() {
+abstract class BaseViewModel(vararg useCases: BaseUseCase): ViewModel() {
 
+    private var useCaseList: ArrayList<BaseUseCase> = arrayListOf()
+
+    init {
+        useCaseList.addAll(useCases)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        useCaseList.forEach {
+            it.dispose()
+        }
+    }
 }
