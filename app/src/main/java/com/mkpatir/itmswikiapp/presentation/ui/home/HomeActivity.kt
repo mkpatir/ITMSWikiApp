@@ -4,16 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mkpatir.itmswikiapp.R
-import com.mkpatir.itmswikiapp.data.dummy.DummyData
 import com.mkpatir.itmswikiapp.databinding.ActivityHomeBinding
 import com.mkpatir.itmswikiapp.internal.extention.gone
 import com.mkpatir.itmswikiapp.internal.extention.isVisible
 import com.mkpatir.itmswikiapp.internal.extention.visible
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseActivity
-import com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricSheetFragment
+import com.mkpatir.itmswikiapp.presentation.ui.home.addorupdatemetric.AddOrUpdateMetricSheetFragment
 import com.mkpatir.itmswikiapp.presentation.ui.home.detail.DetailSheetFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,7 +61,7 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
             DetailSheetFragment.showFragment(supportFragmentManager,it)
         }
         fabButton.setOnClickListener {
-            AddMetricSheetFragment.showFragment(supportFragmentManager)
+            AddOrUpdateMetricSheetFragment.showFragment(supportFragmentManager,true)
         }
     }
 
@@ -71,7 +69,10 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
         getViewModel().apply {
             allMetricsLiveData.observe(this@HomeActivity, Observer {
                 this.metricsCount.set(it.size.toString())
-                metricsAdapter.assignInitialValues(it)
+                metricsAdapter.assignInitialValues(it.apply { reverse() })
+            })
+            showUpdateSheetFragmentLiveData.observe(this@HomeActivity, Observer {
+                AddOrUpdateMetricSheetFragment.showFragment(supportFragmentManager,false,it)
             })
         }
     }

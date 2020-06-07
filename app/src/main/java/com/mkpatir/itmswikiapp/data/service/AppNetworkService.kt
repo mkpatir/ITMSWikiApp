@@ -27,4 +27,7 @@ interface AppNetworkService {
     @POST("metric")
     fun addMetric(@Body addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
 
+    @PUT("metric/{id}")
+    fun updateMetric(@Path("id") id: String,@Body addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
+
 }

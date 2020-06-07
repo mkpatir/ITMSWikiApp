@@ -24,4 +24,6 @@ class AppRepositoryImpl constructor(private val appNetworkService: AppNetworkSer
 
     override fun addMetric(addMetricRequest: AddMetricRequest): Single<MetricDetailResponse> = appNetworkService.addMetric(addMetricRequest)
 
+    override fun updateMetric(id: String, addMetricRequest: AddMetricRequest): Single<MetricDetailResponse> = appNetworkService.updateMetric(id, addMetricRequest)
+
 }

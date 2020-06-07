@@ -9,6 +9,7 @@ import com.mkpatir.itmswikiapp.domain.executor.ThreadExecutor
 import com.mkpatir.itmswikiapp.domain.interactor.home.GetAllMetricsUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.home.addmetric.AddMetricUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.home.detail.GetMetricDetailsUseCase
+import com.mkpatir.itmswikiapp.domain.interactor.home.editmetric.EditMetricUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.register.RegisterUseCase
 import com.mkpatir.itmswikiapp.domain.repository.AppRepository
@@ -16,7 +17,7 @@ import com.mkpatir.itmswikiapp.internal.helpers.SharedPrefHelper
 import com.mkpatir.itmswikiapp.presentation.UIThread
 import com.mkpatir.itmswikiapp.presentation.ui.home.detail.DetailViewModel
 import com.mkpatir.itmswikiapp.presentation.ui.home.HomeViewModel
-import com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricViewModel
+import com.mkpatir.itmswikiapp.presentation.ui.home.addorupdatemetric.AddOrUpdateMetricViewModel
 import com.mkpatir.itmswikiapp.presentation.ui.login.LoginViewModel
 import com.mkpatir.itmswikiapp.presentation.ui.register.RegisterViewModel
 import com.mkpatir.itmswikiapp.presentation.ui.splash.SplashViewModel
@@ -50,7 +51,7 @@ val viewModelModule = module(true){
     viewModel { RegisterViewModel(get(), get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
-    viewModel { AddMetricViewModel(get()) }
+    viewModel { AddOrUpdateMetricViewModel(get(), get()) }
 }
 
 val useCaseModule = module(true) {
@@ -59,6 +60,7 @@ val useCaseModule = module(true) {
     factory { GetAllMetricsUseCase(get(), get(), get()) }
     factory { GetMetricDetailsUseCase(get(), get(), get()) }
     factory { AddMetricUseCase(get(), get(), get()) }
+    factory { EditMetricUseCase(get(), get(), get()) }
 }
 
 val appKoinModules = listOf(appModule, viewModelModule, useCaseModule)

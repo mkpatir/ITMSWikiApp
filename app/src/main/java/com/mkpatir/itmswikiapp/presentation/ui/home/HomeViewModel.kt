@@ -2,6 +2,7 @@ package com.mkpatir.itmswikiapp.presentation.ui.home
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
+import com.mkpatir.itmswikiapp.data.models.response.MetricDetailResponse
 import com.mkpatir.itmswikiapp.data.models.response.MetricResponse
 import com.mkpatir.itmswikiapp.domain.interactor.home.GetAllMetricsObserver
 import com.mkpatir.itmswikiapp.domain.interactor.home.GetAllMetricsUseCase
@@ -14,6 +15,8 @@ class HomeViewModel(
     val metricsCount = ObservableField("0")
 
     val allMetricsLiveData = MutableLiveData<ArrayList<MetricResponse>>()
+
+    val showUpdateSheetFragmentLiveData = MutableLiveData<MetricDetailResponse>()
 
     fun getAllMetrics(){
         getAllMetricsUseCase.execute(GetAllMetricsObserver({

@@ -21,4 +21,6 @@ interface AppRepository {
 
     fun addMetric(addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
 
+    fun updateMetric(id: String,addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
+
 }

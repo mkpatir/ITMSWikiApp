@@ -7,11 +7,11 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="addMetricHandler"
-            type="com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricHandler" />
+            name="addOrUpdateMetricHandler"
+            type="com.mkpatir.itmswikiapp.presentation.ui.home.addorupdatemetric.AddOrUpdateMetricHandler" />
         <variable
             name="viewModel"
-            type="com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricViewModel" />
+            type="com.mkpatir.itmswikiapp.presentation.ui.home.addorupdatemetric.AddOrUpdateMetricViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_XXL"
-            android:text="@string/add_metric_screen_title"
+            android:text="@{viewModel.title}"
             android:textAppearance="@style/BigTextAppearance.Bold"
             android:textColor="@color/colorPrimaryDark"
             android:textAlignment="center"
@@ -33,7 +33,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/metricName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_XXL"
             android:background="@drawable/bg_edittext_curved_grey"
             android:hint="@string/hint_metric_name"
@@ -43,7 +43,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/metricGoal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_M"
             android:background="@drawable/bg_edittext_curved_grey"
             android:hint="@string/hint_metric_goal"
@@ -53,7 +53,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/metricMeasurementPeriod"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_M"
             android:background="@drawable/bg_edittext_curved_grey"
             android:hint="@string/hint_metric_measurement_period"
@@ -63,7 +63,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/metricMeasurementType"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_M"
             android:background="@drawable/bg_edittext_curved_grey"
             android:hint="@string/hint_metric_measurement_type"
@@ -75,8 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_M"
-            android:text="@string/add"
-            android:onClick="@{addMetricHandler.addMetric}"
+            android:text="@{viewModel.buttonText}"
+            android:onClick="@{addOrUpdateMetricHandler.addOrUpdateMetric}"
             android:visibility="@{viewModel.addButtonVisibility ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/metricMeasurementType"
             style="@style/CurvedButtonStyle"/>

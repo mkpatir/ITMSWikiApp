@@ -7,10 +7,13 @@ import com.mkpatir.itmswikiapp.R
 import com.mkpatir.itmswikiapp.data.dummy.DummyData
 import com.mkpatir.itmswikiapp.databinding.SheetFragmentDetailBinding
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseBottomSheetDialogFragment
+import com.mkpatir.itmswikiapp.presentation.ui.home.HomeActivity
+import com.mkpatir.itmswikiapp.presentation.ui.home.HomeViewModel
+import com.mkpatir.itmswikiapp.presentation.ui.home.addorupdatemetric.AddOrUpdateMetricSheetFragment
 import kotlinx.android.synthetic.main.sheet_fragment_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailSheetFragment: BaseBottomSheetDialogFragment<DetailViewModel,SheetFragmentDetailBinding>() {
+class DetailSheetFragment: BaseBottomSheetDialogFragment<DetailViewModel,SheetFragmentDetailBinding>(), DetailHandler {
 
     companion object {
         private const val FRAGMENT_TAG = "DETAIL_FRAGMENT"
@@ -26,16 +29,25 @@ class DetailSheetFragment: BaseBottomSheetDialogFragment<DetailViewModel,SheetFr
         }
     }
 
+    private lateinit var parentViewModel: HomeViewModel
+
     override fun setLayout(): Int = R.layout.sheet_fragment_detail
 
     override fun setViewModel(): Lazy<DetailViewModel> = viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        parentViewModel = (activity as HomeActivity).getViewModel()
         getDataBinding().apply {
             viewModel = this@DetailSheetFragment.getViewModel()
+            detailHandler = this@DetailSheetFragment
         }
         getData()
+    }
+
+    override fun update(view: View) {
+        parentViewModel.showUpdateSheetFragmentLiveData.value = getViewModel().metricDetailsLiveData.value
+        dismiss()
     }
 
     private fun getData(){
