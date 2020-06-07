@@ -11,7 +11,9 @@ import android.util.Pair
 import android.view.View
 import com.mkpatir.itmswikiapp.R
 import com.mkpatir.itmswikiapp.databinding.ActivitySplashBinding
+import com.mkpatir.itmswikiapp.internal.helpers.SharedPrefHelper
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseActivity
+import com.mkpatir.itmswikiapp.presentation.ui.home.HomeActivity
 import com.mkpatir.itmswikiapp.presentation.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,9 +25,15 @@ class SplashActivity: BaseActivity<SplashViewModel,ActivitySplashBinding>() {
     }
 
     private lateinit var handler: Handler
+    private lateinit var sharedPrefHelper: SharedPrefHelper
 
     private val runnable = Runnable {
-        startLoginActivity()
+        if (sharedPrefHelper.authToken.isNullOrBlank()){
+            startLoginActivity()
+        }
+        else {
+            startHomeActivity()
+        }
     }
 
     override fun setLayout(): Int = R.layout.activity_splash
@@ -34,6 +42,7 @@ class SplashActivity: BaseActivity<SplashViewModel,ActivitySplashBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPrefHelper = SharedPrefHelper(this)
         handler = Handler()
         startAnimation()
     }
@@ -45,7 +54,12 @@ class SplashActivity: BaseActivity<SplashViewModel,ActivitySplashBinding>() {
                 drawable.start()
                 drawable.registerAnimationCallback(object : Animatable2.AnimationCallback() {
                     override fun onAnimationEnd(drawable: Drawable?) {
-                        startLoginActivity()
+                        if (sharedPrefHelper.authToken.isNullOrBlank()){
+                            startLoginActivity()
+                        }
+                        else {
+                            startHomeActivity()
+                        }
                     }
                 })
             }
@@ -60,6 +74,13 @@ class SplashActivity: BaseActivity<SplashViewModel,ActivitySplashBinding>() {
         val pair = Pair<View,String>(splashIcon,getString(R.string.image_transition))
         val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,pair)
         startActivity(LoginActivity.callingIntent(this),activityOptions.toBundle())
+        activityFinishAfterTransition()
+    }
+
+    private fun startHomeActivity(){
+        val pair = Pair<View,String>(splashIcon,getString(R.string.image_transition))
+        val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,pair)
+        startActivity(HomeActivity.callingIntent(this),activityOptions.toBundle())
         activityFinishAfterTransition()
     }
 }
