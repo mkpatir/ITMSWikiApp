@@ -1,5 +1,6 @@
 package com.mkpatir.itmswikiapp.data.service
 
+import com.mkpatir.itmswikiapp.data.models.requeest.AddMetricRequest
 import com.mkpatir.itmswikiapp.data.models.requeest.LoginRequest
 import com.mkpatir.itmswikiapp.data.models.requeest.RegisterRequest
 import com.mkpatir.itmswikiapp.data.models.response.LoginResponse
@@ -22,5 +23,8 @@ interface AppNetworkService {
 
     @GET("metric/{id}")
     fun getMetricDetails(@Path("id") id: String): Single<MetricDetailResponse>
+
+    @POST("metric")
+    fun addMetric(@Body addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
 
 }

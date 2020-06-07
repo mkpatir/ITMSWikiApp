@@ -70,6 +70,7 @@ class HomeActivity: BaseActivity<HomeViewModel,ActivityHomeBinding>() {
     private fun observeLiveData(){
         getViewModel().apply {
             allMetricsLiveData.observe(this@HomeActivity, Observer {
+                this.metricsCount.set(it.size.toString())
                 metricsAdapter.assignInitialValues(it)
             })
         }

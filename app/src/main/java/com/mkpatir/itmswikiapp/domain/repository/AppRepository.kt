@@ -1,5 +1,6 @@
 package com.mkpatir.itmswikiapp.domain.repository
 
+import com.mkpatir.itmswikiapp.data.models.requeest.AddMetricRequest
 import com.mkpatir.itmswikiapp.data.models.requeest.LoginRequest
 import com.mkpatir.itmswikiapp.data.models.requeest.RegisterRequest
 import com.mkpatir.itmswikiapp.data.models.response.LoginResponse
@@ -17,5 +18,7 @@ interface AppRepository {
     fun getAllMetrics(): Single<ArrayList<MetricResponse>>
 
     fun getMetricDetails(id: String): Single<MetricDetailResponse>
+
+    fun addMetric(addMetricRequest: AddMetricRequest): Single<MetricDetailResponse>
 
 }

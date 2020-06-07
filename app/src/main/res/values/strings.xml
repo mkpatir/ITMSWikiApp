@@ -36,5 +36,6 @@
 
     <!-- Add Metric Screen -->
     <string name="add_metric_screen_title">Add Metric</string>
+    <string name="add_metric_success">Metric added successfully.</string>
 
 </resources>

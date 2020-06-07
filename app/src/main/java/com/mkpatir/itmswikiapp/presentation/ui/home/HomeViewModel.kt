@@ -17,7 +17,6 @@ class HomeViewModel(
 
     fun getAllMetrics(){
         getAllMetricsUseCase.execute(GetAllMetricsObserver({
-            metricsCount.set(it.size.toString())
             allMetricsLiveData.value = it
         },{
             toastError()

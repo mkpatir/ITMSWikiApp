@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="addMetricHandler"
             type="com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricHandler" />
+        <variable
+            name="viewModel"
+            type="com.mkpatir.itmswikiapp.presentation.ui.home.addmetric.AddMetricViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,7 +77,21 @@
             android:layout_marginTop="@dimen/base_margin_M"
             android:text="@string/add"
             android:onClick="@{addMetricHandler.addMetric}"
+            android:visibility="@{viewModel.addButtonVisibility ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/metricMeasurementType"
             style="@style/CurvedButtonStyle"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:visibility="@{viewModel.lottieAnimationVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@id/metricMeasurementType"
+            app:layout_constraintStart_toStartOf="@id/metricMeasurementType"
+            app:layout_constraintEnd_toEndOf="@id/metricMeasurementType"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_paperplane"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
