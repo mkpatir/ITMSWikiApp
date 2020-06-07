@@ -82,6 +82,7 @@ dependencies {
     implementation thirdPartyDependencies.conscrypt
     implementation thirdPartyDependencies.rxJava
     implementation thirdPartyDependencies.rxAndroid
+    implementation thirdPartyDependencies.lottie
 
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.androidXjunit

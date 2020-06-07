@@ -10,6 +10,7 @@ ext{
     loggingInterceptorVersion = "4.7.2"
     conscryptVersion = "2.4.0"
     rxJavaVersion = "3.0.0"
+    lottieVersion = "3.4.1"
 
     junitVersion = "4.12"
     androidXjunitVersion = "1.1.1"
@@ -31,7 +32,8 @@ ext{
             loggingInterceptor  :"com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
             conscrypt           :"org.conscrypt:conscrypt-android:$conscryptVersion",
             rxJava              :"io.reactivex.rxjava3:rxjava:$rxJavaVersion",
-            rxAndroid           :"io.reactivex.rxjava3:rxandroid:$rxJavaVersion"
+            rxAndroid           :"io.reactivex.rxjava3:rxandroid:$rxJavaVersion",
+            lottie              :"com.airbnb.android:lottie:$lottieVersion"
     ]
     testDependencies = [
             junit               :"junit:junit:$junitVersion",

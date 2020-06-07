@@ -6,6 +6,9 @@
         <variable
             name="registerHandler"
             type="com.mkpatir.itmswikiapp.presentation.ui.register.RegisterHandler" />
+        <variable
+            name="viewModel"
+            type="com.mkpatir.itmswikiapp.presentation.ui.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

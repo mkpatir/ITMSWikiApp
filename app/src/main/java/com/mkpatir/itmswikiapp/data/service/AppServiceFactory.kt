@@ -9,10 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AppServiceFactory {
 
-    fun buildService(): AppNetworkService{
+    fun buildService(
+        authTokenInterceptor: AuthTokenInterceptor
+    ): AppNetworkService{
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.API_ADRESS)
-            .client(buildHttpClient())
+            .client(buildHttpClient(authTokenInterceptor))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -21,11 +23,12 @@ object AppServiceFactory {
         return service
     }
 
-    private fun buildHttpClient(): OkHttpClient{
+    private fun buildHttpClient(authTokenInterceptor: AuthTokenInterceptor): OkHttpClient{
         val okHttpClientBuilder = OkHttpClient.Builder().apply {
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
+            addInterceptor(authTokenInterceptor)
         }
         return okHttpClientBuilder.build()
     }

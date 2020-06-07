@@ -28,6 +28,7 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getDataBinding().viewModel = getViewModel()
         getDataBinding().loginHandler = this
     }
 
@@ -55,12 +56,10 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
     }
 
     override fun emailTextChange(s: CharSequence, start: Int, before: Int, count: Int) {
-        getViewModel().email.set(s.toString())
         getViewModel().setButtonEnable(s.isNotBlank() && getViewModel().password.get().isNullOrBlank().not())
     }
 
     override fun passwordTextChange(s: CharSequence, start: Int, before: Int, count: Int) {
-        getViewModel().password.set(s.toString())
         getViewModel().setButtonEnable(s.isNotBlank() && getViewModel().email.get().isNullOrBlank().not())
     }
 

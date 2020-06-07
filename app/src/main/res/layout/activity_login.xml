@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="viewModel"
             type="com.mkpatir.itmswikiapp.presentation.ui.login.LoginViewModel" />
@@ -77,8 +79,22 @@
             android:text="@string/login"
             android:onClick="@{view -> loginHandler.loginClick(view)}"
             android:transitionName="@string/login_screen_transition_login_to_register_button"
+            android:visibility="@{viewModel.loginButtonVisibility ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/loginPassword"
             style="@style/CurvedButtonStyle"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:visibility="@{viewModel.lottieAnimationVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@id/loginPassword"
+            app:layout_constraintStart_toStartOf="@id/loginPassword"
+            app:layout_constraintEnd_toEndOf="@id/loginPassword"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_paperplane"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/loginSignUpTitle"

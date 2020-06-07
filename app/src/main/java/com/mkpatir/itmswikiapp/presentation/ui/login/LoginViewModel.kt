@@ -1,35 +1,50 @@
 package com.mkpatir.itmswikiapp.presentation.ui.login
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import com.mkpatir.itmswikiapp.data.models.requeest.LoginRequest
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginObserver
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginUseCase
+import com.mkpatir.itmswikiapp.internal.helpers.SharedPrefHelper
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseViewModel
 
 class LoginViewModel(
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val sharedPrefHelper: SharedPrefHelper
 ): BaseViewModel() {
 
-    //Button Properties
-    var isButtonEnabled = ObservableField(false)
+    //UI Properties
+    var buttonEnabled = ObservableField(false)
+
+    var loginButtonVisibility = ObservableField<Boolean>(true)
+    var lottieAnimationVisibility = ObservableField<Boolean>(false)
 
     // Texts
     var email = ObservableField("")
     var password = ObservableField("")
 
     fun setButtonEnable(isEnable: Boolean){
-        isButtonEnabled.set(isEnable)
-        isButtonEnabled.notifyChange()
+        buttonEnabled.set(isEnable)
     }
 
     fun login(email: String,password: String){
+        setLoginButtonVisibility(false)
         loginUseCase.execute(
             LoginObserver({
-
+                sharedPrefHelper.authToken = it.token
             },{
-
+                setLoginButtonVisibility(true)
             }), LoginRequest(email, password)
         )
+    }
+
+    private fun setLoginButtonVisibility(isVisible: Boolean){
+        if (isVisible){
+            loginButtonVisibility.set(true)
+            lottieAnimationVisibility.set(false)
+        }
+        else{
+            loginButtonVisibility.set(false)
+            lottieAnimationVisibility.set(true)
+        }
     }
 }
