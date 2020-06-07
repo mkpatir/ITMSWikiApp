@@ -32,15 +32,15 @@ class DetailSheetFragment: BaseBottomSheetDialogFragment<DetailViewModel,SheetFr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        assignComponents()
-
+        getDataBinding().apply {
+            viewModel = this@DetailSheetFragment.getViewModel()
+        }
+        getData()
     }
 
-    private fun assignComponents() {
-        val dummy = DummyData.getMetricDetailDummyData().find { it.id == arguments?.getString(DETAIL_METRIC_ID) }
-        detailName.text = dummy?.name
-        detailGoal.text = dummy?.goal
-        detailType.text = dummy?.measurementType
-        detailPeriod.text = dummy?.measurementPeriod
+    private fun getData(){
+        arguments?.getString(DETAIL_METRIC_ID)?.let {
+            getViewModel().getMetricDetails(it)
+        }
     }
 }

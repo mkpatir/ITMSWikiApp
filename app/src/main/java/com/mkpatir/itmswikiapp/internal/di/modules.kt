@@ -7,6 +7,7 @@ import com.mkpatir.itmswikiapp.domain.executor.JobExecutor
 import com.mkpatir.itmswikiapp.domain.executor.PostExecutionThread
 import com.mkpatir.itmswikiapp.domain.executor.ThreadExecutor
 import com.mkpatir.itmswikiapp.domain.interactor.home.GetAllMetricsUseCase
+import com.mkpatir.itmswikiapp.domain.interactor.home.detail.GetMetricDetailsUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginUseCase
 import com.mkpatir.itmswikiapp.domain.interactor.register.RegisterUseCase
 import com.mkpatir.itmswikiapp.domain.repository.AppRepository
@@ -47,7 +48,7 @@ val viewModelModule = module(true){
     viewModel { LoginViewModel(get(), get()) }
     viewModel { RegisterViewModel(get(), get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { DetailViewModel() }
+    viewModel { DetailViewModel(get()) }
     viewModel { AddMetricViewModel() }
 }
 
@@ -55,6 +56,7 @@ val useCaseModule = module(true) {
     factory { LoginUseCase(get(),get(),get()) }
     factory { RegisterUseCase(get(), get(), get()) }
     factory { GetAllMetricsUseCase(get(), get(), get()) }
+    factory { GetMetricDetailsUseCase(get(), get(), get()) }
 }
 
 val appKoinModules = listOf(appModule, viewModelModule, useCaseModule)

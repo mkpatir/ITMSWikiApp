@@ -3,12 +3,11 @@ package com.mkpatir.itmswikiapp.data.service
 import com.mkpatir.itmswikiapp.data.models.requeest.LoginRequest
 import com.mkpatir.itmswikiapp.data.models.requeest.RegisterRequest
 import com.mkpatir.itmswikiapp.data.models.response.LoginResponse
+import com.mkpatir.itmswikiapp.data.models.response.MetricDetailResponse
 import com.mkpatir.itmswikiapp.data.models.response.MetricResponse
 import com.mkpatir.itmswikiapp.data.models.response.RegisterResponse
 import io.reactivex.rxjava3.core.Single
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AppNetworkService {
 
@@ -20,5 +19,8 @@ interface AppNetworkService {
 
     @GET("metric")
     fun getAllMetrics(): Single<ArrayList<MetricResponse>>
+
+    @GET("metric/{id}")
+    fun getMetricDetails(@Path("id") id: String): Single<MetricDetailResponse>
 
 }
