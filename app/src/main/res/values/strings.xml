@@ -10,6 +10,7 @@
     <string name="hint_metric_goal">Metric Goal</string>
     <string name="hint_metric_measurement_period">Metric Measurement Period</string>
     <string name="hint_metric_measurement_type">Metric Measurement Type</string>
+    <string name="empty_field_error">Please fill all the fields !</string>
 
     <!-- Transitions -->
     <string name="image_transition">imageTransition</string>
@@ -21,6 +22,7 @@
     <string name="login_screen_transition_login_to_register_password">loginToRegisterPasswordTransition</string>
     <string name="login_screen_transition_login_to_register_button">loginToRegisterButtonTransition</string>
     <string name="login_screen_transition_login_to_register_title">loginToRegisterTitleTransition</string>
+
 
     <!-- Register Screen -->
     <string name="register_screen_description">Create an account</string>

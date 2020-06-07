@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="registerHandler"
             type="com.mkpatir.itmswikiapp.presentation.ui.register.RegisterHandler" />
@@ -63,7 +64,7 @@
             app:layout_constraintStart_toEndOf="@id/appIcon"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/registerUsername"
+            android:id="@+id/registerEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edittext_height"
             android:layout_marginTop="@dimen/base_margin_XXL"
@@ -81,7 +82,7 @@
             android:layout_marginTop="@dimen/base_margin_M"
             android:background="@drawable/bg_edittext_curved_grey"
             android:hint="@string/hint_name"
-            app:layout_constraintTop_toBottomOf="@id/registerUsername"
+            app:layout_constraintTop_toBottomOf="@id/registerEmail"
             style="@style/EdittextStyle"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -114,7 +115,21 @@
             android:text="@string/register"
             android:transitionName="@string/login_screen_transition_login_to_register_button"
             android:onClick="@{registerHandler.registerClick}"
+            android:visibility="@{viewModel.registerButtonVisibility ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/registerPassword"
             style="@style/CurvedButtonStyle"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/base_margin_M"
+            android:visibility="@{viewModel.lottieAnimationVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@id/registerPassword"
+            app:layout_constraintStart_toStartOf="@id/registerPassword"
+            app:layout_constraintEnd_toEndOf="@id/registerPassword"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_paperplane"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

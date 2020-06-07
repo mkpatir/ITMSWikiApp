@@ -1,7 +1,9 @@
 package com.mkpatir.itmswikiapp.presentation.ui.login
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import com.mkpatir.itmswikiapp.data.models.requeest.LoginRequest
+import com.mkpatir.itmswikiapp.data.models.response.LoginResponse
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginObserver
 import com.mkpatir.itmswikiapp.domain.interactor.login.LoginUseCase
 import com.mkpatir.itmswikiapp.internal.helpers.SharedPrefHelper
@@ -12,7 +14,9 @@ class LoginViewModel(
     private val sharedPrefHelper: SharedPrefHelper
 ): BaseViewModel() {
 
-    //UI Properties
+    /**
+     * UI Properties
+     */
     var buttonEnabled = ObservableField(false)
 
     var loginButtonVisibility = ObservableField<Boolean>(true)
@@ -21,6 +25,12 @@ class LoginViewModel(
     // Texts
     var email = ObservableField("")
     var password = ObservableField("")
+
+    /**
+     *  Live Data
+     */
+
+    val loginLiveData = MutableLiveData<LoginResponse>()
 
     fun setButtonEnable(isEnable: Boolean){
         buttonEnabled.set(isEnable)
@@ -31,7 +41,9 @@ class LoginViewModel(
         loginUseCase.execute(
             LoginObserver({
                 sharedPrefHelper.authToken = it.token
+                loginLiveData.value = it
             },{
+                toastError()
                 setLoginButtonVisibility(true)
             }), LoginRequest(email, password)
         )

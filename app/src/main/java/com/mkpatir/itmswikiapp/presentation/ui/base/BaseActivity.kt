@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 
 abstract class BaseActivity<VM: BaseViewModel, D: ViewDataBinding>: AppCompatActivity() {
 
@@ -21,6 +22,7 @@ abstract class BaseActivity<VM: BaseViewModel, D: ViewDataBinding>: AppCompatAct
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this,setLayout())
         viewModel = setViewModel().value
+        observeBaseLiveData()
     }
 
     override fun onResume() {
@@ -51,5 +53,13 @@ abstract class BaseActivity<VM: BaseViewModel, D: ViewDataBinding>: AppCompatAct
 
     fun activityFinishAfterTransition(){
         activityFinishAfterTransitionFlag = true
+    }
+
+    private fun observeBaseLiveData(){
+        getViewModel().apply {
+            errorLiveData.observe(this@BaseActivity, Observer {
+                showToast(it)
+            })
+        }
     }
 }

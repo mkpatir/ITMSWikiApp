@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Pair
 import android.view.View
+import androidx.lifecycle.Observer
 import com.mkpatir.itmswikiapp.R
 import com.mkpatir.itmswikiapp.databinding.ActivityLoginBinding
 import com.mkpatir.itmswikiapp.presentation.ui.base.BaseActivity
@@ -30,6 +31,18 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
         super.onCreate(savedInstanceState)
         getDataBinding().viewModel = getViewModel()
         getDataBinding().loginHandler = this
+        observeLiveData()
+    }
+
+    private fun observeLiveData() {
+        getViewModel().apply {
+            loginLiveData.observe(this@LoginActivity, Observer {
+                val imageTransition = Pair<View,String>(appIcon,getString(R.string.image_transition))
+                val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this@LoginActivity,imageTransition)
+                startActivity(HomeActivity.callingIntent(this@LoginActivity), activityOptions.toBundle())
+                activityFinishAfterTransition()
+            })
+        }
     }
 
     override fun onBackPressed() {
@@ -38,11 +51,17 @@ class LoginActivity: BaseActivity<LoginViewModel,ActivityLoginBinding>(), LoginH
     }
 
     override fun loginClick(view: View) {
-        getViewModel().login("Test","Test")
-        /*val imageTransition = Pair<View,String>(appIcon,getString(R.string.image_transition))
-        val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,imageTransition)
-        startActivity(HomeActivity.callingIntent(this), activityOptions.toBundle())
-        activityFinishAfterTransition()*/
+        getDataBinding().apply {
+            if (loginEmail.text.toString().isBlank() || loginPassword.text.toString().isBlank()){
+                showToast(getString(R.string.empty_field_error))
+            }
+            else{
+                this@LoginActivity.getViewModel().login(
+                    loginEmail.text.toString(),
+                    loginPassword.text.toString()
+                )
+            }
+        }
     }
 
     override fun registerClick(view: View) {
